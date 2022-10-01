@@ -1,0 +1,105 @@
+/*
+Stack Implementation (Linked List) using C++
+Author: Shourya Gupta
+*/
+
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* next;
+};
+
+node *top=NULL;
+void push(int d){
+    node *ptr = new node;
+    ptr->data=d;
+    ptr->next=top;
+    top=ptr;
+    cout<<endl<<"Element Pushed!";
+}
+
+void pop(){
+    if(top==NULL){
+        cout<<endl<<"Stack is empty!";
+    }
+    else{
+        node *temp = top;;
+        top=top->next;;
+        cout<<endl<<temp->data<<" popped!";
+        free(temp); 
+    }
+}
+ 
+void peek(){
+    if(top==NULL){
+        cout<<endl<<"Stack is empty!";
+    }
+    else{
+        cout<<endl<<top->data<<" is the element at the top";
+    }
+}
+
+void display(){
+    if(top==NULL){
+        cout<<endl<<"Stack is empty!";
+    }
+
+    else{
+        node *temp=top;
+        while(temp != NULL){
+            cout<<endl<<temp->data;
+            temp=temp->next;
+        }
+    }
+}
+
+void isEmpty(){
+    if(top==NULL){
+        cout<<"Stack is empty!";
+    }
+    else{
+        cout<<"Stack is not empty!";
+    }
+}
+
+int main(){
+    int choice,d;
+    char ans='y';
+    while(ans=='y'){
+        cout<<"STACK OPERATIONS"<<endl<<endl;
+        cout<<"1. PUSH"<<endl;
+        cout<<"2. POP"<<endl;
+        cout<<"3. PEEK"<<endl;
+        cout<<"4. DISPLAY STACK"<<endl;
+        cout<<"5. CHECK IF EMPTY"<<endl;
+        cout<<endl<<"Enter your choice: ";
+        cin>>choice;
+        cout<<endl;
+        switch(choice){
+            case 1:
+                cout<<"Enter the value to PUSH: ";
+                cin>>d;
+                push(d);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                peek();
+                break;
+            case 4:
+                display();
+                break;
+            case 5:
+                isEmpty();
+                break;
+            default:
+                cout<<endl<<"Invalid choice!";
+                break;
+        }
+        cout<<endl<<endl<<"Do you want to choose again(y/n): ";
+        cin>>ans;
+        cout<<endl;
+    }
+}
